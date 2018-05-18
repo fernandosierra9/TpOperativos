@@ -19,7 +19,7 @@ public class Cliente {
 	String username;
 	String password;
 	List <DispositivoAbstracto> dispositivos = new ArrayList <>();
-	
+	double puntosAcumulados = 0;
 	
 	public Cliente(String unNombreCompleto, String unApellido, String username, ID id, Domicilio unDomicilio, long unTelefono,
 			List<DispositivoAbstracto> listaDispositivos) {
@@ -69,10 +69,21 @@ public class Cliente {
 		
 		return dispositivos.size();
 	}
-	
+
+
+	public void agregarModuloAdaptador(DispositivoEstandar disp)
+	{
+		disp.agregarAdaptadorInteligente();
+		this.sumarPuntos(10);
+	}
+
+
+
+
 	public void agregarDispositivo(DispositivoAbstracto disp) {
 		
 		dispositivos.add(disp);
+		this.sumarPuntos(15);
 	}
 	
 	public void usarDispositivo(DispositivoAbstracto disp,LocalDateTime horarioDeEncendido, int horas) {
@@ -108,5 +119,16 @@ public class Cliente {
 	public String nombreCompleto() {
 		return this.nombreCompleto;
 	}
+
+
+	public void sumarPuntos(int puntos)
+	{
+		puntosAcumulados = puntosAcumulados + puntos;
+	}
+
+
+
+
+
 
 }

@@ -5,7 +5,7 @@ import java.time.LocalTime;
 
 public class DispositivoEstandar extends DispositivoAbstracto {
 
-	AdaptadorNulo adaptador = new AdaptadorNulo();
+	DispositivoAbstracto adaptador = new AdaptadorNulo("",0,false);
 	
 	boolean inteligente=false;
 	
@@ -13,13 +13,13 @@ public class DispositivoEstandar extends DispositivoAbstracto {
 		super (nombre, consumo, encendido);
 		
 	}
-	void agregarAdaptador() {
-	    this.inteligente=true;
-	    this.adaptador=new Adaptador();
-
-    }
 
 
+void agregarAdaptadorInteligente () {
+    this.inteligente=true;
+    this.adaptador=new Adaptador( "",0,false);
+
+}
 
 
     @Override
