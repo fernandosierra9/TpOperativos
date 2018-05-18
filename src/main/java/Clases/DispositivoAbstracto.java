@@ -61,7 +61,7 @@ import java.time.temporal.ChronoUnit;
 		return nombre;
 	}
 
-	
+	 abstract boolean esInteligente ();
 
 public boolean isEncendido() {
 		

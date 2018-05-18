@@ -1,34 +1,37 @@
 package Clases;
 
+import java.time.LocalDateTime;
+import java.time.LocalTime;
+import java.time.temporal.ChronoUnit;
+
 public class DispositivoInteligente extends DispositivoAbstracto {
 
 	public DispositivoInteligente(String nombre, double consumo, boolean encendido) {
 		super(nombre, consumo, encendido);
-		// TODO Auto-generated constructor stub
+
 	}
 
 	@Override
-	public int calcularIntervalo() {
-		// TODO Auto-generated method stub
+	public int calcularIntervalo(LocalTime horario, LocalTime otroHorario) {
 		return 0;
 	}
 
-	@Override
-	void registrarUso() {
-		// TODO Auto-generated method stub
+    public void registrarUso(LocalDateTime horaEncendido, int horas) {
 
-	}
+        this.encender(horaEncendido);
 
-	@Override
-	double getConsumoTotal() {
-		// TODO Auto-generated method stub
-		return 0;
-	}
+        LocalDateTime horaApagado = horaEncendido.plusHours(horas);
 
+        this.apagar(horaApagado);
+
+        horasDeUso += horaEncendido.until(horaApagado,ChronoUnit.HOURS);
+        consumoTotal += horasDeUso * this.consumo;
+        this.reiniciar();
+    }
 	@Override
-	boolean isEncendido() {
-		// TODO Auto-generated method stub
-		return false;
+	public boolean esInteligente() {
+
+		return true;
 	}
 
 }

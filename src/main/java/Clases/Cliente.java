@@ -18,11 +18,11 @@ public class Cliente {
 	Categoria categoria;
 	String username;
 	String password;
-	List <Dispositivo> dispositivos = new ArrayList <>();
+	List <DispositivoAbstracto> dispositivos = new ArrayList <>();
 	
 	
 	public Cliente(String unNombreCompleto, String unApellido, String username, ID id, Domicilio unDomicilio, long unTelefono,
-			List<Dispositivo> listaDispositivos) {
+			List<DispositivoAbstracto> listaDispositivos) {
 		
 		this.nombreCompleto = unNombreCompleto;
 		this.apellido = unApellido;
@@ -52,17 +52,17 @@ public class Cliente {
 	
 	public boolean algunDispositivoEncendido() {
 		
-		return dispositivos.stream().anyMatch(disp -> disp.isEncendido());
+		return dispositivos.stream().filter(disp->disp.esInteligente()).anyMatch(disp -> disp.isEncendido());
 	}
 	
 	public long cantidadDeDispositivosEncendidos() {
 		
-		return dispositivos.stream().filter(disp -> disp.isEncendido()).count();
+		return dispositivos.stream().filter(disp->disp.esInteligente()).filter(disp -> disp.isEncendido()).count();
 	}
 	
 	public long cantidadDeDispositivosApagados() {
 		
-		return dispositivos.stream().filter(disp -> !disp.isEncendido()).count();
+		return dispositivos.stream().filter(disp->disp.esInteligente()).filter(disp -> !disp.isEncendido()).count();
 	}
 	
 	public int cantidadDeDispositivos() {
@@ -70,12 +70,12 @@ public class Cliente {
 		return dispositivos.size();
 	}
 	
-	public void agregarDispositivo(Dispositivo disp) {
+	public void agregarDispositivo(DispositivoAbstracto disp) {
 		
 		dispositivos.add(disp);
 	}
 	
-	public void usarDispositivo(Dispositivo disp,LocalDateTime horarioDeEncendido, int horas) {
+	public void usarDispositivo(DispositivoAbstracto disp,LocalDateTime horarioDeEncendido, int horas) {
 		
 		disp.registrarUso(horarioDeEncendido, horas);
 	}

@@ -1,9 +1,21 @@
 package Clases;
 
-public class ModoEncendido {
+import java.time.LocalDateTime;
 
-	public ModoEncendido() {
-		// TODO Auto-generated constructor stub
+public class ModoEncendido implements ModoDispositivo {
+
+
+	public void encender(DispositivoInteligente dispositivo, LocalDateTime hora) {
+
 	}
+	public void apagar (DispositivoInteligente dispositivo, LocalDateTime horaApagado){
+
+		dispositivo.cambiarModo(new ModoApagado());
+		dispositivo.apagar(horaApagado);
+
+
+	}
+
+
 
 }

@@ -9,9 +9,10 @@ public class ModoApagado implements ModoDispositivo {
 		dispositivo.encender(hora);
 	}
 
-	
-	
-	public void apagar (DispositivoInteligente dispositivo,LocalDateTime horaApagado) {
+
+
+
+	public void apagar (DispositivoInteligente dispositivo, LocalDateTime horaApagado) {
 		
 	}
 
