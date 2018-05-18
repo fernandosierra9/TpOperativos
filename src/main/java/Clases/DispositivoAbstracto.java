@@ -4,7 +4,7 @@ import java.time.LocalDateTime;
 import java.time.LocalTime;
 import java.time.temporal.ChronoUnit;
 
- abstract class DispositivoAbstracto {
+public abstract class DispositivoAbstracto {
 	
 	
 	String nombre;
