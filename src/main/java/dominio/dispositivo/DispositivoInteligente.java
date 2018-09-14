@@ -216,4 +216,14 @@ public class DispositivoInteligente extends Dispositivo {
 
     }
 
+    public void ahorro() {
+
+
+    }
+
+    public void ejecutar() {
+
+
+    }
+
 }

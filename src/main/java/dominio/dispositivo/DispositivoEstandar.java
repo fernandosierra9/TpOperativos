@@ -105,4 +105,26 @@ public class DispositivoEstandar extends Dispositivo {
 
 	}
 
+
+
+	public void ahorro() {
+
+
+	}
+
+	public void ejecutar() {
+
+
+	}
+
+	public void apagar() {
+
+
+	}
+
+	public void encender() {
+
+
+	}
+
 }

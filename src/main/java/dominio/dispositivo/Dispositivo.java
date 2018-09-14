@@ -5,7 +5,7 @@ import javax.persistence.*;
 
 @Entity
 @Inheritance(strategy=InheritanceType.TABLE_PER_CLASS )
-public abstract class Dispositivo {
+public abstract class Dispositivo  implements  DispositivoFisico{
 
     @Id
     @GeneratedValue( strategy= GenerationType.AUTO)
