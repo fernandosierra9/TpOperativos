@@ -88,4 +88,90 @@ public class Administrador {
 	}
 
 
+
+	void editarDispositivoDB(Integer idviejo, Dispositivo nuevo){
+
+		EntityManagerFactory emf = Persistence.createEntityManagerFactory("ejemplo2");
+		EntityManager em = emf.createEntityManager();
+		EntityTransaction t = em.getTransaction();
+
+
+		try {
+
+
+			Dispositivo d= em.find(Dispositivo.class,idviejo);
+
+			d=nuevo;
+
+
+			t.begin();
+			em.merge(d);
+			t.commit();
+			System.out.println("se modifico dispositivo ");
+		}
+
+
+		catch(Exception e){
+
+			t.rollback();
+			System.out.println("Fallo" +e.getMessage());
+
+		}
+
+		finally {
+			em.close();
+		}
+
+
+
+
+
+	}
+
+
+
+
+	void eliminarDispositivoDB(Integer id){
+
+		EntityManagerFactory emf = Persistence.createEntityManagerFactory("ejemplo2");
+		EntityManager em = emf.createEntityManager();
+		EntityTransaction t = em.getTransaction();
+
+
+		try {
+
+
+			Dispositivo d= em.find(Dispositivo.class,id);
+
+
+
+
+			t.begin();
+			em.remove(d);
+			t.commit();
+			System.out.println("se borro dispositivo ");
+		}
+
+
+		catch(Exception e){
+
+			t.rollback();
+			System.out.println("Fallo" +e.getMessage());
+
+		}
+
+		finally {
+			em.close();
+		}
+
+
+
+
+
+	}
+
+
+
+
+
 }
