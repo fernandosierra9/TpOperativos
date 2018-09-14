@@ -1,12 +1,18 @@
 package dominio.usuario;
 
-import javax.persistence.Entity;
+import dominio.dispositivo.Dispositivo;
+import dominio.dispositivo.DispositivoInteligente;
+
+import javax.persistence.*;
+import javax.persistence.criteria.CriteriaBuilder;
+import javax.persistence.criteria.CriteriaDelete;
+import javax.persistence.criteria.CriteriaQuery;
+import javax.persistence.criteria.CriteriaUpdate;
+import javax.persistence.metamodel.Metamodel;
 import java.time.LocalDate;
 import java.time.temporal.ChronoUnit;
-import javax.persistence.GeneratedValue;
-import javax.persistence.Id;
-
-
+import java.util.List;
+import java.util.Map;
 
 
 public class Administrador {
@@ -44,5 +50,42 @@ public class Administrador {
 		LocalDate ahora = LocalDate.now();
 		return fechaAlta.until(ahora, ChronoUnit.MONTHS);
 	}
+
+
+	public void agregarDispositivoDB(Dispositivo dispositivo){
+
+
+
+
+			EntityManagerFactory emf = Persistence.createEntityManagerFactory("ejemplo");
+			EntityManager em = emf.createEntityManager();
+			EntityTransaction t = em.getTransaction();
+
+
+			try {
+
+				t.begin();
+				em.persist(dispositivo);
+				t.commit();
+				System.out.println("se inserto dispositivo ");
+			}
+
+
+			catch(Exception e){
+
+			t.rollback();
+			System.out.println("Fallo" +e.getMessage());
+
+			}
+
+			finally {
+				em.close();
+			}
+
+
+
+
+	}
+
 
 }
